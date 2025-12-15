@@ -1,7 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap');
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F9FAFB;
+}
 
 
 /* Cambiar el color del texto */
 .text-red-500 {
-  color: #e3342f;
+  color: #090a0b;
+}
+
+/* Navbar estilos */
+.div_navbar {
+  background-color: #FCD34D; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+
+.logo img{
+  /* background: blue; */
+  height: 30px; 
+  width: auto;
+}
+
+.logo a{
+  color: #1E3A8A;
+  font-weight: 600; 
+  text-decoration: none;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+ .ul_navbar{
+  /* list-style: none;
+  margin: 0;
+  padding: 0; */
+  display: flex;
+  gap: 1.5rem;
+}
+
+.ul_navbar li {
+  display: inline-block;
+}
+ 
+.ul_navbar a {
+  color: #1E3A8A;
+  font-weight: 600; 
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+
+  /* transition: background 0.2s, color 0.2s; */
+}
+
+
+.div_navbar a:hover {
+  font-weight: 700; 
+  color: #090a0b;
+  /* font-size: 1.25rem;
+  line-height: 1.75rem;  */
+}
+
+/*
+
+.div_navbar a:hover {
+  background: #fff;
+  color: #EF4444;
+} */
+
+
+
+/* Equivalente a Tailwind bg-red-500 */
+.bg-red-500 {
+  background-color: #db4a4a;
 }
 

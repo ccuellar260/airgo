@@ -4,16 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion de Inventarios | Practicas | Cristian Cuellar Dev</title>
-   {% block custom_styles %}{% endblock custom_styles %}
    {% load static %}
-   <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}"/>
+    {% block custom_styles %}{% endblock custom_styles %}
+
 </head>
 <body>
+     
+       <nav class="div_navbar">
+            <div class="logo">
+                <a href="#" >
+                 
+                        <img src="{% static 'images/airgo_logo.png' %}" alt="">
+                  <span>AirGo</span>    
+                    </a>
+            </div>
+             <ul class="ul_navbar">
+                <li><a href="{% url "vuelos_index" %}" >Vuelos </a></li>
+                <li><a href="{% url "reserva_inicio" %}" >Reserva </a></li>
+                <li><a href="/admin/">Admin</a></li>
 
-    
+            </ul> 
+        </nav>
+        
+   
+ 
+    {% comment %} <div class="bg-red-500">  
+        hola xd 
+        <p class="text-red-500"> esto es una prueba </p>
+    </div>   {% endcomment %}
 
      {% block content %}{% endblock content %}
-
 
      {% block scripts %}{% endblock scripts %}
 

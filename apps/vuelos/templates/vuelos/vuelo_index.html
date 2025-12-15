@@ -1,7 +1,99 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/vuelo.css' %}"/>
+{% endblock custom_styles %}
 
 {% block content %}
 
     <h1> hola mudno, saludps desde vuelos index</h1>
+
+    <!-- Puedes pegar esto dentro de tu bloque content en vuelo_index.html -->
+<div class="buscador-vuelos">
+  <div class="tipo-viaje">
+    <button class="btn-viaje activo">Ida y Vuelta</button>
+    <button class="btn-viaje">Solo Ida</button>
+  </div>
+
+<div class="div_filas">
+      <div class="div_selects w-full">
+         <div id="campo_origen" class="campo campo_left"> 
+            <span> Origen: </span>
+             <input type="text" id="input_origen" placeholder="Selecciona un aeropuerto" readonly> 
+
+            <div id="modal_origen" class="modal-origen">
+                
+        
+            <ul>
+               {% for vuelo in vuelos %}
+               <li class="opcion-origen">
+                <span class="opcion-avion"> {{ vuelo.icono }} </span>
+                <div class="opcion-aeropuerto">
+                    <div class="opcion-ciudad-pais">
+                        <span>{{vuelo.ciudad}}</span>
+                        <span class="opcion-pais"> {{vuelo.pais}}</span>
+                    </div>
+                    <div class="opcion-ciudad-pais">
+                        <span class="codigo-aeropuerto"> {{vuelo.codigo}}</span>
+                        <span class="nombre-aeropuerto">{{vuelo.nombre_aeropuerto}}</span>
+                    </div>
+                </div>
+            </li>
+               {% endfor %}                
+
+            
+          
+           
+            <!-- Agrega más aeropuertos aquí -->
+            </ul>
+        </div>
+
+        </div>
+
+
+        <div class="campo_svg">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+            </svg>
+        </div>
+
+         <div class="campo campo_right">
+            <span>Destino:</span>
+        </div>
+  </div>
+
+   <div class="div_selects w-full">
+         <div class="campo campo_left"> 
+            <span> Salida: </span>
+        </div>
+         <div class="campo campo_right">
+            <span>Regreso:</span>
+        </div>
+  </div>
+
+  <div class="div_selects w-200">
+         <div class="campo "> 
+            <span> Salida: </span>
+        </div>
+  </div>
+</div>
+
+    <div class="div_button_vuelos">
+        <button>
+            Buscar Vuelos
+        </button>
+
+    </div>
+
+
+</div>
+
+
+
 {% endblock content  %}
+
+{% block scripts %}
+    <script src="{% static 'js/vuelo.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,1122 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block custom_styles %}
+    <link rel="stylesheet" href="{% static 'css/reserva.css' %}"/>
+{% endblock custom_styles %}
+
+{% block content %}
+
+    <div class="container_reserva">
+        <!-- Stepper -->
+        <div class="div_stepper">
+            <button class="stepper_item active" data-step="1">
+                <span class="stepper_paso">1</span>
+                <span class="stepper_texto">Vuelo de ida</span>
+            </button>
+
+            <button class="stepper_item" data-step="2">
+                <span class="stepper_paso">2</span>
+                <span class="stepper_texto">Vuelo de vuelta</span>
+            </button>
+
+            <button class="stepper_item" data-step="3">
+                <span class="stepper_paso">3</span>
+                <span class="stepper_texto">Pasajeros</span>
+            </button>
+
+            <button class="stepper_item" data-step="4">
+                <span class="stepper_paso">4</span>
+                <span class="stepper_texto">Reserva</span>
+            </button>
+
+            <button class="stepper_item" data-step="5">
+                <span class="stepper_paso">5</span>
+                <span class="stepper_texto">Pago</span>
+            </button>
+        </div>
+
+        <!-- Contenido de cada paso -->
+        <div class="steps_content">
+            <!-- Paso 1: Vuelo de ida -->
+            <div class="step_content active" id="step-1">
+                <div class="step_header">
+                    <h2>Selecciona tu vuelo de ida</h2>
+                    <p>Elige el vuelo que mejor se adapte a tus necesidades</p>
+                </div>
+                
+                <!-- Selector de fechas para vuelo de ida -->
+                <div class="fechas_selector">
+                    <div class="fecha_card" data-date="2025-09-12">
+                        <div class="fecha_numero">1</div>
+                        <div class="fecha_dia">Vie. 12 Sep</div>
+                        <div class="fecha_precio">BOG. 607</div>
+                    </div>
+                    
+                    <div class="fecha_card selected" data-date="2025-09-13">
+                        <div class="fecha_numero">2</div>
+                        <div class="fecha_dia">Sáb. 13 Sep</div>
+                        <div class="fecha_precio">BOG. 651</div>
+                    </div>
+                    
+                    <div class="fecha_card" data-date="2025-09-14">
+                        <div class="fecha_numero">3</div>
+                        <div class="fecha_dia">Dom. 14 Sep</div>
+                        <div class="fecha_precio">BOG. 1018</div>
+                    </div>
+                    
+                    <div class="fecha_card" data-date="2025-09-15">
+                        <div class="fecha_numero">4</div>
+                        <div class="fecha_dia">Lun. 15 Sep</div>
+                        <div class="fecha_precio">BOG. 651</div>
+                    </div>
+                    
+                    <div class="fecha_card" data-date="2025-09-16">
+                        <div class="fecha_numero">5</div>
+                        <div class="fecha_dia">Mar. 16 Sep</div>
+                        <div class="fecha_precio">BOG. 651</div>
+                    </div>
+                </div>
+                
+                <!-- Filtros de ordenamiento -->
+                <div class="filtros_vuelos">
+                    <span class="filtro_label">Ordenar por:</span>
+                    <button class="filtro_btn active">Más relevante</button>
+                    <button class="filtro_btn">Precio</button>
+                    <button class="filtro_btn">Horario de salida</button>
+                    <button class="filtro_btn">Duración</button>
+                </div>
+
+                <!-- Categorías de vuelos -->
+                <div class="categorias_vuelos">
+                    <h3 class="categoria_titulo">Vuelos directos</h3>
+                </div>
+                
+                <div class="vuelos_lista">
+                    <!-- Vuelo 1 -->
+                    <div class="vuelo_card_detallado" data-vuelo="1">
+                        <div class="vuelo_left">
+                            <div class="vuelo_fecha">vie. 12 sep. 2025</div>
+                            <div class="vuelo_hora_salida">08:00</div>
+                            <div class="vuelo_aeropuerto">SRE</div>
+                        </div>
+                        
+                        <div class="vuelo_center">
+                            <div class="conexion_info">
+                                <span class="conexion_badge">1 Conexión</span>
+                                <div class="conexion_icono">✈️</div>
+                            </div>
+                            <div class="vuelo_ruta">
+                                <span class="aeropuerto_origen">SRE</span>
+                                <div class="linea_vuelo">
+                                    <div class="punto_origen"></div>
+                                    <div class="linea"></div>
+                                    <div class="punto_destino"></div>
+                                </div>
+                                <span class="aeropuerto_destino">TJA</span>
+                            </div>
+                            <div class="aerolineas">
+                                <span>Air Int Alicamari</span>
+                                <span>Air Capitán Oriel Lea Plaza</span>
+                            </div>
+                            <div class="duracion">2 horas y 40 minutos</div>
+                        </div>
+                        
+                        <div class="vuelo_right">
+                            <div class="vuelo_fecha">vie. 12 sep. 2025</div>
+                            <div class="vuelo_hora_llegada">10:40</div>
+                            <div class="vuelo_aeropuerto">TJA</div>
+                        </div>
+                        
+                        <div class="vuelo_precio_section">
+                            <div class="precio_desde">Desde</div>
+                            <div class="precio_valor">BOG 607</div>
+                            <button class="btn_dropdown">▼</button>
+                        </div>
+                    </div>
+
+                    <!-- Panel desplegable para Vuelo 1 -->
+                    <div class="vuelo_detalles_panel" id="panel-vuelo-1">
+                        <div class="panel_header">
+                            <div class="vuelo_info_mini">
+                                <span class="fecha_mini">sáb. 18 oct. 2025</span>
+                                <div class="ruta_mini">
+                                    <span class="hora_mini">10:35</span>
+                                    <span class="aeropuerto_mini">TJA</span>
+                                    <div class="conexion_mini">
+                                        <span class="conexion_badge_mini">1 Conexión</span>
+                                        <div class="ruta_visual_mini">
+                                            <span class="aeropuerto_codigo">TJA</span>
+                                            <div class="linea_mini"></div>
+                                            <span class="aeropuerto_codigo">SRE</span>
+                                        </div>
+                                        <div class="aerolinea_mini">Air Capitán Oriel Lea Plaza</div>
+                                        <div class="duracion_mini">3 horas y 40 minutos</div>
+                                    </div>
+                                    <span class="hora_mini">19:15</span>
+                                    <span class="aeropuerto_mini">SRE</span>
+                                </div>
+                                <div class="logo_aerolinea">
+                                    <img src="{% static 'images/airgo_logo.png' %}" alt="BoA" class="logo_mini">
+                                    <span class="precio_mini">Desde BOG 852</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tarifas_container">
+                            <div class="tarifa_card">
+                                <div class="tarifa_header">
+                                    <h3 class="tarifa_titulo">Flex</h3>
+                                    <div class="tarifa_info">
+                                        <span class="tarifa_flexible">¡Más flexible!</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="tarifa_precio">
+                                    <span class="precio_grande">BOG. 852</span>
+                                    <span class="asientos_disponibles">9 Asientos disponibles</span>
+                                </div>
+                                
+                                <div class="tarifa_beneficios">
+                                    <div class="beneficio_item">
+                                        <span class="icono_beneficio">🎒</span>
+                                        <span class="beneficio_texto">1 Artículo personal</span>
+                                    </div>
+                                    <div class="beneficio_item">
+                                        <span class="icono_beneficio">👜</span>
+                                        <span class="beneficio_texto">1 Equipaje de mano (7 kg)</span>
+                                    </div>
+                                    <div class="beneficio_item">
+                                        <span class="icono_beneficio">🧳</span>
+                                        <span class="beneficio_texto">2 PC Equipaje en bodega (hasta 23kg)</span>
+                                    </div>
+                                    <div class="beneficio_item">
+                                        <span class="icono_beneficio">💺</span>
+                                        <span class="beneficio_texto">Selección de asientos incluida</span>
+                                    </div>
+                                    <div class="beneficio_item">
+                                        <span class="icono_beneficio">🌐</span>
+                                        <span class="beneficio_texto">Web check-in disponible</span>
+                                    </div>
+                                    <div class="beneficio_item">
+                                        <span class="icono_beneficio">🔄</span>
+                                        <span class="beneficio_texto">Cambios antes del vuelo SIN penalidad. Puede aplicar diferencia tarifaria</span>
+                                    </div>
+                                    <div class="beneficio_item">
+                                        <span class="icono_beneficio">🔄</span>
+                                        <span class="beneficio_texto">Cambios después del vuelo 24 - BOG (valor neto), puede aplicar diferencia tarifaria</span>
+                                    </div>
+                                    <div class="beneficio_item">
+                                        <span class="icono_beneficio">💰</span>
+                                        <span class="beneficio_texto">Reembolsable según condiciones (70%-95% sobre el valor neto)</span>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn_seleccionar_tarifa">Seleccionar</button>
+                                <div class="precio_por_pasajero">Precio por pasajero</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vuelo 2 -->
+                    <div class="vuelo_card_detallado" data-vuelo="2">
+                        <div class="vuelo_left">
+                            <div class="vuelo_fecha">vie. 12 sep. 2025</div>
+                            <div class="vuelo_hora_salida">17:45</div>
+                            <div class="vuelo_aeropuerto">SRE</div>
+                        </div>
+                        
+                        <div class="vuelo_center">
+                            <div class="conexion_info">
+                                <span class="conexion_badge">1 Conexión</span>
+                                <div class="conexion_icono">✈️</div>
+                            </div>
+                            <div class="vuelo_ruta">
+                                <span class="aeropuerto_origen">SRE</span>
+                                <div class="linea_vuelo">
+                                    <div class="punto_origen"></div>
+                                    <div class="linea"></div>
+                                    <div class="punto_destino"></div>
+                                </div>
+                                <span class="aeropuerto_destino">TJA</span>
+                            </div>
+                            <div class="aerolineas">
+                                <span>Air Int Alicamari</span>
+                                <span>Air Capitán Oriel Lea Plaza</span>
+                            </div>
+                            <div class="duracion">3 horas</div>
+                        </div>
+                        
+                        <div class="vuelo_right">
+                            <div class="vuelo_fecha">vie. 12 sep. 2025</div>
+                            <div class="vuelo_hora_llegada">20:45</div>
+                            <div class="vuelo_aeropuerto">TJA</div>
+                        </div>
+                        
+                        <div class="vuelo_precio_section">
+                            <div class="precio_desde">Desde</div>
+                            <div class="precio_valor">BOG 651</div>
+                            <button class="btn_dropdown">▼</button>
+                        </div>
+                    </div>
+
+                    <!-- Vuelo 3 -->
+                    <div class="vuelo_card_detallado">
+                        <div class="vuelo_left">
+                            <div class="vuelo_fecha">vie. 12 sep. 2025</div>
+                            <div class="vuelo_hora_salida">15:00</div>
+                            <div class="vuelo_aeropuerto">SRE</div>
+                        </div>
+                        
+                        <div class="vuelo_center">
+                            <div class="conexion_info">
+                                <span class="conexion_badge">1 Conexión</span>
+                                <div class="conexion_icono">✈️</div>
+                            </div>
+                            <div class="vuelo_ruta">
+                                <span class="aeropuerto_origen">SRE</span>
+                                <div class="linea_vuelo">
+                                    <div class="punto_origen"></div>
+                                    <div class="linea"></div>
+                                    <div class="punto_destino"></div>
+                                </div>
+                                <span class="aeropuerto_destino">TJA</span>
+                            </div>
+                            <div class="aerolineas">
+                                <span>Air Int Alicamari</span>
+                                <span>Air Capitán Oriel Lea Plaza</span>
+                            </div>
+                            <div class="duracion">5 horas y 45 minutos</div>
+                        </div>
+                        
+                        <div class="vuelo_right">
+                            <div class="vuelo_fecha">vie. 12 sep. 2025</div>
+                            <div class="vuelo_hora_llegada">20:45</div>
+                            <div class="vuelo_aeropuerto">TJA</div>
+                        </div>
+                        
+                        <div class="vuelo_precio_section">
+                            <div class="precio_desde">Desde</div>
+                            <div class="precio_valor">BOG 651</div>
+                            <button class="btn_dropdown">▼</button>
+                        </div>
+                    </div>
+
+                    <!-- Vuelo 4 -->
+                    <div class="vuelo_card_detallado">
+                        <div class="vuelo_left">
+                            <div class="vuelo_fecha">vie. 12 sep. 2025</div>
+                            <div class="vuelo_hora_salida">10:35</div>
+                            <div class="vuelo_aeropuerto">SRE</div>
+                        </div>
+                        
+                        <div class="vuelo_center">
+                            <div class="conexion_info">
+                                <span class="conexion_badge">1 Conexión</span>
+                                <div class="conexion_icono">✈️</div>
+                            </div>
+                            <div class="vuelo_ruta">
+                                <span class="aeropuerto_origen">SRE</span>
+                                <div class="linea_vuelo">
+                                    <div class="punto_origen"></div>
+                                    <div class="linea"></div>
+                                    <div class="punto_destino"></div>
+                                </div>
+                                <span class="aeropuerto_destino">TJA</span>
+                            </div>
+                            <div class="aerolineas">
+                                <span>Air Int Alicamari</span>
+                                <span>Air Capitán Oriel Lea Plaza</span>
+                            </div>
+                            <div class="duracion">9 horas y 15 minutos</div>
+                        </div>
+                        
+                        <div class="vuelo_right">
+                            <div class="vuelo_fecha">vie. 12 sep. 2025</div>
+                            <div class="vuelo_hora_llegada">19:50</div>
+                            <div class="vuelo_aeropuerto">TJA</div>
+                        </div>
+                        
+                        <div class="vuelo_precio_section">
+                            <div class="precio_desde">Desde</div>
+                            <div class="precio_valor">BOG 924</div>
+                            <button class="btn_dropdown">▼</button>
+                        </div>
+                    </div>
+
+                    <!-- Vuelo 5 -->
+                    <div class="vuelo_card_detallado">
+                        <div class="vuelo_left">
+                            <div class="vuelo_fecha">vie. 12 sep. 2025</div>
+                            <div class="vuelo_hora_salida">10:00</div>
+                            <div class="vuelo_aeropuerto">SRE</div>
+                        </div>
+                        
+                        <div class="vuelo_center">
+                            <div class="conexion_info">
+                                <span class="conexion_badge">1 Conexión</span>
+                                <div class="conexion_icono">✈️</div>
+                            </div>
+                            <div class="vuelo_ruta">
+                                <span class="aeropuerto_origen">SRE</span>
+                                <div class="linea_vuelo">
+                                    <div class="punto_origen"></div>
+                                    <div class="linea"></div>
+                                    <div class="punto_destino"></div>
+                                </div>
+                                <span class="aeropuerto_destino">TJA</span>
+                            </div>
+                            <div class="aerolineas">
+                                <span>Air Int Alicamari</span>
+                                <span>Air Capitán Oriel Lea Plaza</span>
+                            </div>
+                            <div class="duracion">10 horas y 45 minutos</div>
+                        </div>
+                        
+                        <div class="vuelo_right">
+                            <div class="vuelo_fecha">vie. 12 sep. 2025</div>
+                            <div class="vuelo_hora_llegada">20:45</div>
+                            <div class="vuelo_aeropuerto">TJA</div>
+                        </div>
+                        
+                        <div class="vuelo_precio_section">
+                            <div class="precio_desde">Desde</div>
+                            <div class="precio_valor">BOG 1018</div>
+                            <button class="btn_dropdown">▼</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 2: Vuelo de vuelta -->
+            <div class="step_content" id="step-2">
+                <div class="step_header">
+                    <h2>Selecciona tu vuelo de vuelta</h2>
+                    <p>Completa tu viaje eligiendo el vuelo de regreso</p>
+                </div>
+                
+                <!-- Selector de fechas para vuelo de vuelta -->
+                <div class="fechas_selector">
+                    <div class="fecha_card" data-date="2025-09-17">
+                        <div class="fecha_numero">1</div>
+                        <div class="fecha_dia">Mié. 17 Sep</div>
+                        <div class="fecha_precio">MDE. 590</div>
+                    </div>
+                    
+                    <div class="fecha_card selected" data-date="2025-09-18">
+                        <div class="fecha_numero">2</div>
+                        <div class="fecha_dia">Jue. 18 Sep</div>
+                        <div class="fecha_precio">MDE. 620</div>
+                    </div>
+                    
+                    <div class="fecha_card" data-date="2025-09-19">
+                        <div class="fecha_numero">3</div>
+                        <div class="fecha_dia">Vie. 19 Sep</div>
+                        <div class="fecha_precio">MDE. 950</div>
+                    </div>
+                    
+                    <div class="fecha_card" data-date="2025-09-20">
+                        <div class="fecha_numero">4</div>
+                        <div class="fecha_dia">Sáb. 20 Sep</div>
+                        <div class="fecha_precio">MDE. 620</div>
+                    </div>
+                    
+                    <div class="fecha_card" data-date="2025-09-21">
+                        <div class="fecha_numero">5</div>
+                        <div class="fecha_dia">Dom. 21 Sep</div>
+                        <div class="fecha_precio">MDE. 620</div>
+                    </div>
+                </div>
+                
+                <!-- Filtros de ordenamiento -->
+                <div class="filtros_vuelos">
+                    <span class="filtro_label">Ordenar por:</span>
+                    <button class="filtro_btn active">Más relevante</button>
+                    <button class="filtro_btn">Precio</button>
+                    <button class="filtro_btn">Horario de salida</button>
+                    <button class="filtro_btn">Duración</button>
+                </div>
+
+                <!-- Categorías de vuelos -->
+                <div class="categorias_vuelos">
+                    <h3 class="categoria_titulo">Vuelos con conexión</h3>
+                </div>
+                
+                <div class="vuelos_lista">
+                    <!-- Vuelo de vuelta 1 -->
+                    <div class="vuelo_card_detallado">
+                        <div class="vuelo_left">
+                            <div class="vuelo_fecha">mié. 17 sep. 2025</div>
+                            <div class="vuelo_hora_salida">09:15</div>
+                            <div class="vuelo_aeropuerto">TJA</div>
+                        </div>
+                        
+                        <div class="vuelo_center">
+                            <div class="conexion_info">
+                                <span class="conexion_badge">1 Conexión</span>
+                                <div class="conexion_icono">✈️</div>
+                            </div>
+                            <div class="vuelo_ruta">
+                                <span class="aeropuerto_origen">TJA</span>
+                                <div class="linea_vuelo">
+                                    <div class="punto_origen"></div>
+                                    <div class="linea"></div>
+                                    <div class="punto_destino"></div>
+                                </div>
+                                <span class="aeropuerto_destino">SRE</span>
+                            </div>
+                            <div class="aerolineas">
+                                <span>Air Capitán Oriel Lea Plaza</span>
+                                <span>Air Int Alicamari</span>
+                            </div>
+                            <div class="duracion">2 horas y 30 minutos</div>
+                        </div>
+                        
+                        <div class="vuelo_right">
+                            <div class="vuelo_fecha">mié. 17 sep. 2025</div>
+                            <div class="vuelo_hora_llegada">11:45</div>
+                            <div class="vuelo_aeropuerto">SRE</div>
+                        </div>
+                        
+                        <div class="vuelo_precio_section">
+                            <div class="precio_desde">Desde</div>
+                            <div class="precio_valor">MDE 590</div>
+                            <button class="btn_dropdown">▼</button>
+                        </div>
+                    </div>
+
+                    <!-- Vuelo de vuelta 2 -->
+                    <div class="vuelo_card_detallado">
+                        <div class="vuelo_left">
+                            <div class="vuelo_fecha">jue. 18 sep. 2025</div>
+                            <div class="vuelo_hora_salida">14:20</div>
+                            <div class="vuelo_aeropuerto">TJA</div>
+                        </div>
+                        
+                        <div class="vuelo_center">
+                            <div class="conexion_info">
+                                <span class="conexion_badge">1 Conexión</span>
+                                <div class="conexion_icono">✈️</div>
+                            </div>
+                            <div class="vuelo_ruta">
+                                <span class="aeropuerto_origen">TJA</span>
+                                <div class="linea_vuelo">
+                                    <div class="punto_origen"></div>
+                                    <div class="linea"></div>
+                                    <div class="punto_destino"></div>
+                                </div>
+                                <span class="aeropuerto_destino">SRE</span>
+                            </div>
+                            <div class="aerolineas">
+                                <span>Air Capitán Oriel Lea Plaza</span>
+                                <span>Air Int Alicamari</span>
+                            </div>
+                            <div class="duracion">3 horas y 15 minutos</div>
+                        </div>
+                        
+                        <div class="vuelo_right">
+                            <div class="vuelo_fecha">jue. 18 sep. 2025</div>
+                            <div class="vuelo_hora_llegada">17:35</div>
+                            <div class="vuelo_aeropuerto">SRE</div>
+                        </div>
+                        
+                        <div class="vuelo_precio_section">
+                            <div class="precio_desde">Desde</div>
+                            <div class="precio_valor">MDE 620</div>
+                            <button class="btn_dropdown">▼</button>
+                        </div>
+                    </div>
+
+                    <!-- Vuelo de vuelta 3 -->
+                    <div class="vuelo_card_detallado">
+                        <div class="vuelo_left">
+                            <div class="vuelo_fecha">vie. 19 sep. 2025</div>
+                            <div class="vuelo_hora_salida">16:45</div>
+                            <div class="vuelo_aeropuerto">TJA</div>
+                        </div>
+                        
+                        <div class="vuelo_center">
+                            <div class="conexion_info">
+                                <span class="conexion_badge">1 Conexión</span>
+                                <div class="conexion_icono">✈️</div>
+                            </div>
+                            <div class="vuelo_ruta">
+                                <span class="aeropuerto_origen">TJA</span>
+                                <div class="linea_vuelo">
+                                    <div class="punto_origen"></div>
+                                    <div class="linea"></div>
+                                    <div class="punto_destino"></div>
+                                </div>
+                                <span class="aeropuerto_destino">SRE</span>
+                            </div>
+                            <div class="aerolineas">
+                                <span>Air Capitán Oriel Lea Plaza</span>
+                                <span>Air Int Alicamari</span>
+                            </div>
+                            <div class="duracion">4 horas y 50 minutos</div>
+                        </div>
+                        
+                        <div class="vuelo_right">
+                            <div class="vuelo_fecha">vie. 19 sep. 2025</div>
+                            <div class="vuelo_hora_llegada">21:35</div>
+                            <div class="vuelo_aeropuerto">SRE</div>
+                        </div>
+                        
+                        <div class="vuelo_precio_section">
+                            <div class="precio_desde">Desde</div>
+                            <div class="precio_valor">MDE 950</div>
+                            <button class="btn_dropdown">▼</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 3: Pasajeros -->
+            <div class="step_content" id="step-3">
+                <div class="step_header">
+                    <h2>Pasajeros</h2>
+                    <p>Por favor verifica que la información de los pasajeros sea correcta antes de continuar.</p>
+                </div>
+                
+                <div class="pasajeros_container">
+                    <!-- Pasajero 1 -->
+                    <div class="pasajero_card">
+                        <div class="pasajero_header">
+                            <h3 class="pasajero_titulo">Pasajero 1 · Adulto</h3>
+                            <button class="pasajero_toggle">⌄</button>
+                        </div>
+                        
+                        <div class="pasajero_content">
+                            <!-- Checkbox viajero frecuente -->
+                            <div class="viajero_frecuente">
+                                <input type="checkbox" id="viajero-frecuente" class="checkbox_frecuente">
+                                <label for="viajero-frecuente" class="label_frecuente">Añadir un número de viajero frecuente</label>
+                            </div>
+                            
+                            <!-- Formulario de datos -->
+                            <div class="formulario_pasajero">
+                                <div class="form_row">
+                                    <div class="form_group">
+                                        <label class="form_label">Nombres</label>
+                                        <input type="text" placeholder="Ingresar nombres" class="form_input">
+                                        <small class="form_help">Ingresa tu(s) nombre(s) exactamente como figuran en tu documento de identidad</small>
+                                    </div>
+                                    
+                                    <div class="form_group">
+                                        <label class="form_label">Apellidos</label>
+                                        <input type="text" placeholder="Ingresar apellidos" class="form_input">
+                                        <small class="form_help">Ingresa tus apellidos exactamente como figura en tu documento de identidad</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="form_row">
+                                    <div class="form_group">
+                                        <label class="form_label">Fecha de Nacimiento</label>
+                                        <input type="text" placeholder="DD/MM/YYYY" class="form_input fecha_input">
+                                        <small class="form_help">Ingresar fecha de nacimiento</small>
+                                    </div>
+                                    
+                                    <div class="form_group">
+                                        <label class="form_label">Género</label>
+                                        <select class="form_select">
+                                            <option value="">Seleccionar género</option>
+                                            <option value="masculino">Masculino</option>
+                                            <option value="femenino">Femenino</option>
+                                            <option value="otro">Otro</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form_row">
+                                    <div class="form_group">
+                                        <label class="form_label">Tipo de documento de identidad</label>
+                                        <select class="form_select">
+                                            <option value="">Seleccionar tipo de documento de identidad</option>
+                                            <option value="cedula">Cédula de Ciudadanía</option>
+                                            <option value="pasaporte">Pasaporte</option>
+                                            <option value="cedula_extranjeria">Cédula de Extranjería</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form_group">
+                                        <label class="form_label">Número de documento de identidad</label>
+                                        <input type="text" placeholder="Ingresar número de documento de identidad" class="form_input">
+                                    </div>
+                                </div>
+                                
+                                <div class="form_row">
+                                    <div class="form_group">
+                                        <label class="form_label">Correo electrónico</label>
+                                        <input type="email" placeholder="Ingresar correo electrónico" class="form_input">
+                                    </div>
+                                    
+                                    <div class="form_group celular_group">
+                                        <label class="form_label">Celular</label>
+                                        <div class="celular_input_group">
+                                            <select class="codigo_pais">
+                                                <option value="+591">🇧🇴 Bolivia +591</option>
+                                                <option value="+57">🇨🇴 Colombia +57</option>
+                                                <option value="+51">🇵🇪 Perú +51</option>
+                                            </select>
+                                            <input type="tel" placeholder="" class="form_input celular_input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botones de navegación adicionales -->
+                <div class="pasajeros_actions">
+                    <button class="btn_atras">Atrás</button>
+                    <button class="btn_continuar">Continuar</button>
+                </div>
+            </div>
+
+            <!-- Paso 4: Reserva -->
+            <div class="step_content" id="step-4">
+                <div class="step_header">
+                    <h2>Revisar y Pagar</h2>
+                    <p>Asegúrate de revisar toda la información de tu viaje antes de proceder a pagar.</p>
+                </div>
+                
+                <div class="reserva_container">
+                    <!-- Vuelos seleccionados -->
+                    <div class="vuelos_seleccionados">
+                        <!-- Vuelo de ida -->
+                        <div class="vuelo_tarjeta">
+                            <div class="vuelo_imagen_container">
+                                <img src="{% static 'images/airgo_logo.png' %}" alt="Santa Cruz a La Paz" class="vuelo_imagen">
+                                <div class="vuelo_overlay">
+                                    <h3 class="vuelo_titulo">Santa Cruz a La Paz</h3>
+                                    <p class="vuelo_fecha">lun. 15 sep. 2025 05:30 AM</p>
+                                    <p class="vuelo_precio_tarjeta">BOB 702 por pasajero - FLEX</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vuelo de vuelta -->
+                        <div class="vuelo_tarjeta">
+                            <div class="vuelo_imagen_container">
+                                <img src="{% static 'images/airgo_logo.png' %}" alt="La Paz a Santa Cruz" class="vuelo_imagen">
+                                <div class="vuelo_overlay">
+                                    <h3 class="vuelo_titulo">La Paz a Santa Cruz</h3>
+                                    <p class="vuelo_fecha">vie. 19 sep. 2025 09:35 AM</p>
+                                    <p class="vuelo_precio_tarjeta">BOB 811 por pasajero - FLEX</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Información de pasajeros -->
+                    <div class="pasajeros_info_reserva">
+                        <h3 class="seccion_titulo">Pasajeros</h3>
+                        <p class="seccion_descripcion">Estos son los pasajeros que viajarán, verifica que su información esté correcta antes de continuar.</p>
+                        
+                        <div class="pasajero_item">
+                            <div class="pasajero_info">
+                                <span class="pasajero_nombre">Pasajero 1: Cristian CC</span>
+                                <span class="pasajero_verificado">✓</span>
+                            </div>
+                            <button class="ver_detalle_btn" data-target="detalle-pasajero">Ver detalle ▼</button>
+                        </div>
+                        
+                        <!-- Panel desplegable de pasajero -->
+                        <div class="detalle_panel" id="detalle-pasajero">
+                            <div class="detalle_content">
+                                <div class="pasajero_detalle_info">
+                                    <div class="info_row">
+                                        <span class="info_label">Nombre completo:</span>
+                                        <span class="info_value">Cristian Cuellar Choque</span>
+                                    </div>
+                                    <div class="info_row">
+                                        <span class="info_label">Documento:</span>
+                                        <span class="info_value">CI 12345678</span>
+                                    </div>
+                                    <div class="info_row">
+                                        <span class="info_label">Fecha de nacimiento:</span>
+                                        <span class="info_value">15/08/1990</span>
+                                    </div>
+                                    <div class="info_row">
+                                        <span class="info_label">Género:</span>
+                                        <span class="info_value">Masculino</span>
+                                    </div>
+                                    <div class="info_row">
+                                        <span class="info_label">Correo electrónico:</span>
+                                        <span class="info_value">cristian.cc@email.com</span>
+                                    </div>
+                                    <div class="info_row">
+                                        <span class="info_label">Celular:</span>
+                                        <span class="info_value">+591 70123456</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Detalle de la reserva -->
+                    <div class="detalle_reserva_section">
+                        <h3 class="seccion_titulo">Detalle de la reserva</h3>
+                        <p class="seccion_descripcion">Para ver la información completa del precio de tu reserva haz click en "Ver detalle".</p>
+                        
+                        <div class="precio_detalle">
+                            <button class="ver_detalle_precio_btn" data-target="detalle-precio">Ver detalle</button>
+                            <div class="precio_final">
+                                <span class="precio_label">Precio de viaje por:</span>
+                                <span class="precio_valor_final">BOB. 1521</span>
+                                <span class="precio_dropdown" data-target="detalle-precio">▼</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Panel desplegable de precio -->
+                        <div class="detalle_panel" id="detalle-precio">
+                            <div class="detalle_content">
+                                <div class="precio_breakdown">
+                                    <h4 class="breakdown_titulo">Desglose del precio</h4>
+                                    <div class="precio_item">
+                                        <span class="precio_concepto">Vuelo Santa Cruz → La Paz</span>
+                                        <span class="precio_monto">BOB 702</span>
+                                    </div>
+                                    <div class="precio_item">
+                                        <span class="precio_concepto">Vuelo La Paz → Santa Cruz</span>
+                                        <span class="precio_monto">BOB 811</span>
+                                    </div>
+                                    <div class="precio_item">
+                                        <span class="precio_concepto">Tasas aeroportuarias</span>
+                                        <span class="precio_monto">BOB 8</span>
+                                    </div>
+                                    <div class="precio_separator"></div>
+                                    <div class="precio_item precio_total">
+                                        <span class="precio_concepto">Total</span>
+                                        <span class="precio_monto">BOB 1,521</span>
+                                    </div>
+                                    <div class="precio_nota">
+                                        <small>* Los precios incluyen impuestos y tasas obligatorias</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Condiciones tarifarias -->
+                    <div class="condiciones_section">
+                        <div class="condiciones_header">
+                            <h3 class="seccion_titulo">Condiciones tarifarias</h3>
+                            <button class="condiciones_toggle">▲</button>
+                        </div>
+                        
+                        <div class="condiciones_content">
+                            <ul class="condiciones_lista">
+                                <li>Has escogido diferentes tarifas en tu itinerario. Las condiciones tarifarias específicas aplican únicamente para el trayecto asociado.</li>
+                                <li>Dependiendo de las tarifas que hayas seleccionado, es posible que los reembolsos no estén permitidos y que los cambios de itinerario impliquen cargos adicionales y penalidades.</li>
+                                <li>Si deseas conocer más, puedes consultar las condiciones tarifarias</li>
+                            </ul>
+                            
+                            <div class="terminos_checkbox">
+                                <input type="checkbox" id="acepto_terminos" class="checkbox_terminos">
+                                <label for="acepto_terminos" class="label_terminos">
+                                    He leído y acepto los <a href="#" class="link_terminos">Términos y Condiciones de Uso</a>, 
+                                    <a href="#" class="link_terminos">Condiciones Tarifarias</a> y 
+                                    <a href="#" class="link_terminos">Contrato de Transporte</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botones de navegación para reserva -->
+                <div class="reserva_navigation">
+                    <button class="btn_atras_reserva">Atrás</button>
+                    <button class="btn_proceder_pago">Proceder al pago</button>
+                </div>
+            </div>
+
+            <!-- Paso 5: Pago -->
+            <div class="step_content" id="step-5">
+                <div class="step_header">
+                    <h2>Pagar reserva</h2>
+                    <p>Se ha generado un código de reserva de pago inmediato. Finaliza tu reserva realizando el pago.</p>
+                </div>
+                
+                <div class="pago_container">
+                    <!-- Código de reserva -->
+                    <div class="codigo_reserva_section">
+                        <div class="codigo_container">
+                            <span class="codigo_label">Código de reserva</span>
+                            <span class="codigo_valor">HJ76Y2</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Métodos de pago -->
+                    <div class="metodos_pago_section">
+                        <h3 class="metodos_titulo">Selecciona un método de pago</h3>
+                        <p class="metodos_descripcion">Selecciona un método de pago y realiza el pago de tu reserva para finalizar el proceso.</p>
+                        
+                        <div class="metodos_lista">
+                            <!-- Banca Electrónica -->
+                            <div class="metodo_item" data-metodo="banca">
+                                <div class="metodo_info">
+                                    <span class="metodo_nombre">Banca Electrónica</span>
+                                    <div class="bancos_logos">
+                                        <img src="{% static 'images/airgo_logo.png' %}" alt="BCP" class="banco_logo">
+                                        <img src="{% static 'images/airgo_logo.png' %}" alt="Banco Mercantil" class="banco_logo">
+                                        <img src="{% static 'images/airgo_logo.png' %}" alt="Banco Nacional" class="banco_logo">
+                                        <img src="{% static 'images/airgo_logo.png' %}" alt="Banco Sol" class="banco_logo">
+                                        <img src="{% static 'images/airgo_logo.png' %}" alt="BNB" class="banco_logo">
+                                        <img src="{% static 'images/airgo_logo.png' %}" alt="Banco Fassil" class="banco_logo">
+                                        <span class="mas_bancos">+</span>
+                                    </div>
+                                </div>
+                                <div class="metodo_selector">
+                                    <input type="radio" id="banca" name="metodo_pago" value="banca" class="metodo_radio">
+                                    <label for="banca" class="metodo_radio_label"></label>
+                                </div>
+                            </div>
+                            
+                            <!-- Pago con QR -->
+                            <div class="metodo_item" data-metodo="qr">
+                                <div class="metodo_info">
+                                    <span class="metodo_nombre">Pago con QR</span>
+                                    <div class="qr_logo">
+                                        <img src="{% static 'images/airgo_logo.png' %}" alt="QR Code" class="qr_icon">
+                                    </div>
+                                </div>
+                                <div class="metodo_selector">
+                                    <input type="radio" id="qr" name="metodo_pago" value="qr" class="metodo_radio">
+                                    <label for="qr" class="metodo_radio_label"></label>
+                                </div>
+                            </div>
+                            
+                            <!-- Billetera Móvil -->
+                            <div class="metodo_item" data-metodo="billetera">
+                                <div class="metodo_info">
+                                    <span class="metodo_nombre">Billetera Móvil</span>
+                                    <div class="billetera_logo">
+                                        <img src="{% static 'images/airgo_logo.png' %}" alt="Tigo Money" class="billetera_icon">
+                                    </div>
+                                </div>
+                                <div class="metodo_selector">
+                                    <input type="radio" id="billetera" name="metodo_pago" value="billetera" class="metodo_radio">
+                                    <label for="billetera" class="metodo_radio_label"></label>
+                                </div>
+                            </div>
+                            
+                            <!-- Tarjeta de Crédito/Débito -->
+                            <div class="metodo_item" data-metodo="tarjeta">
+                                <div class="metodo_info">
+                                    <span class="metodo_nombre">Tarjeta de Crédito/Débito</span>
+                                    <div class="tarjetas_logos">
+                                        <img src="{% static 'images/airgo_logo.png' %}" alt="Visa" class="tarjeta_logo">
+                                        <img src="{% static 'images/airgo_logo.png' %}" alt="Mastercard" class="tarjeta_logo">
+                                    </div>
+                                </div>
+                                <div class="metodo_selector">
+                                    <input type="radio" id="tarjeta" name="metodo_pago" value="tarjeta" class="metodo_radio">
+                                    <label for="tarjeta" class="metodo_radio_label"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Resumen de precio -->
+                    <div class="resumen_precio_pago">
+                        <div class="precio_resumen_container">
+                            <button class="ver_detalle_resumen_btn">Ver detalle</button>
+                            <div class="precio_info_final">
+                                <span class="precio_texto">Precio de viaje por 1 adulto pasajero</span>
+                                <div class="precio_final_container">
+                                    <span class="precio_final_valor">BOB. 1521</span>
+                                    <span class="precio_dropdown_final">▼</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botones de navegación para pago -->
+                <div class="pago_navigation">
+                    <button class="btn_atras_pago">Atrás</button>
+                    <button class="btn_continuar_pago" id="btn-procesar-pago" disabled>Procesar pago</button>
+                </div>
+                
+                <!-- Sección de pago con QR (oculta inicialmente) -->
+                <div class="qr_pago_section" id="qr-pago-section" style="display: none;">
+                    <div class="step_header">
+                        <h2>Pagar reserva</h2>
+                        <p>Se ha generado un código de reserva de pago inmediato. Finaliza tu reserva realizando el pago.</p>
+                    </div>
+                    
+                    <div class="qr_container">
+                        <!-- Código de reserva amarillo -->
+                        <div class="codigo_banner">
+                            <span class="codigo_label">Código de reserva</span>
+                            <span class="codigo_valor">HJ9E46</span>
+                        </div>
+                        
+                        <!-- Sección principal del QR -->
+                        <div class="qr_content">
+                            <div class="qr_header">
+                                <h3>Pago con QR</h3>
+                                <button class="qr_close_btn">✕</button>
+                            </div>
+                            
+                            <div class="qr_body">
+                                <div class="qr_code_container">
+                                    <div class="qr_code">
+                                        <svg width="200" height="200" viewBox="0 0 200 200">
+                                            <rect width="200" height="200" fill="white"/>
+                                            <!-- QR Code pattern -->
+                                            <g fill="black">
+                                                <!-- Corner markers -->
+                                                <rect x="10" y="10" width="50" height="50"/>
+                                                <rect x="140" y="10" width="50" height="50"/>
+                                                <rect x="10" y="140" width="50" height="50"/>
+                                                
+                                                <!-- Inner corner squares -->
+                                                <rect x="20" y="20" width="30" height="30" fill="white"/>
+                                                <rect x="150" y="20" width="30" height="30" fill="white"/>
+                                                <rect x="20" y="150" width="30" height="30" fill="white"/>
+                                                
+                                                <rect x="25" y="25" width="20" height="20"/>
+                                                <rect x="155" y="25" width="20" height="20"/>
+                                                <rect x="25" y="155" width="20" height="20"/>
+                                                
+                                                <!-- Data pattern -->
+                                                <rect x="70" y="10" width="10" height="10"/>
+                                                <rect x="90" y="10" width="10" height="10"/>
+                                                <rect x="110" y="10" width="10" height="10"/>
+                                                <rect x="70" y="30" width="10" height="10"/>
+                                                <rect x="110" y="30" width="10" height="10"/>
+                                                <rect x="70" y="50" width="10" height="10"/>
+                                                <rect x="90" y="50" width="10" height="10"/>
+                                                <rect x="110" y="50" width="10" height="10"/>
+                                                
+                                                <!-- More QR pattern -->
+                                                <rect x="10" y="70" width="10" height="10"/>
+                                                <rect x="30" y="70" width="10" height="10"/>
+                                                <rect x="50" y="70" width="10" height="10"/>
+                                                <rect x="70" y="70" width="10" height="10"/>
+                                                <rect x="90" y="70" width="10" height="10"/>
+                                                <rect x="110" y="70" width="10" height="10"/>
+                                                <rect x="130" y="70" width="10" height="10"/>
+                                                <rect x="150" y="70" width="10" height="10"/>
+                                                <rect x="170" y="70" width="10" height="10"/>
+                                                <rect x="190" y="70" width="10" height="10"/>
+                                                
+                                                <!-- Continue pattern -->
+                                                <rect x="10" y="90" width="10" height="10"/>
+                                                <rect x="50" y="90" width="10" height="10"/>
+                                                <rect x="90" y="90" width="10" height="10"/>
+                                                <rect x="130" y="90" width="10" height="10"/>
+                                                <rect x="170" y="90" width="10" height="10"/>
+                                                
+                                                <rect x="30" y="110" width="10" height="10"/>
+                                                <rect x="70" y="110" width="10" height="10"/>
+                                                <rect x="110" y="110" width="10" height="10"/>
+                                                <rect x="150" y="110" width="10" height="10"/>
+                                                <rect x="190" y="110" width="10" height="10"/>
+                                                
+                                                <rect x="10" y="130" width="10" height="10"/>
+                                                <rect x="50" y="130" width="10" height="10"/>
+                                                <rect x="90" y="130" width="10" height="10"/>
+                                                <rect x="130" y="130" width="10" height="10"/>
+                                                <rect x="170" y="130" width="10" height="10"/>
+                                                
+                                                <!-- Additional pattern -->
+                                                <rect x="70" y="150" width="10" height="10"/>
+                                                <rect x="90" y="150" width="10" height="10"/>
+                                                <rect x="110" y="150" width="10" height="10"/>
+                                                <rect x="130" y="150" width="10" height="10"/>
+                                                <rect x="150" y="150" width="10" height="10"/>
+                                                <rect x="170" y="150" width="10" height="10"/>
+                                                <rect x="190" y="150" width="10" height="10"/>
+                                                
+                                                <rect x="70" y="170" width="10" height="10"/>
+                                                <rect x="110" y="170" width="10" height="10"/>
+                                                <rect x="150" y="170" width="10" height="10"/>
+                                                <rect x="190" y="170" width="10" height="10"/>
+                                                
+                                                <rect x="70" y="190" width="10" height="10"/>
+                                                <rect x="90" y="190" width="10" height="10"/>
+                                                <rect x="110" y="190" width="10" height="10"/>
+                                                <rect x="130" y="190" width="10" height="10"/>
+                                                <rect x="150" y="190" width="10" height="10"/>
+                                                <rect x="170" y="190" width="10" height="10"/>
+                                                <rect x="190" y="190" width="10" height="10"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <div class="qr_info">
+                                    <p class="qr_instrucciones">Por favor, escanea el código QR con tu aplicación bancaria para completar el pago. Una vez verificada tu transacción, emitiremos tus boletos automáticamente. Esto puede tardar unos momentos, por favor espera.</p>
+                                    
+                                    <div class="precio_resumen_qr">
+                                        <button class="precio_detalle_btn_qr" id="ver-detalle-qr">Ver detalle ⌄</button>
+                                        <div class="precio_final_container_qr">
+                                            <span class="precio_texto_qr">Precio del viaje por 1 Adulto pasajero(s)</span>
+                                            <div class="precio_valores_qr">
+                                                <span class="precio_valor_qr">BOB. 1405</span>
+                                                <div class="precio_breakdown_simple">
+                                                    <span class="precio_item_simple">SS/LECHUGA</span>
+                                                    <span class="precio_item_simple">1405</span>
+                                                    <span class="precio_item_simple">BOB</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Modal de detalle de precio -->
+                                    <div class="precio_modal_qr" id="precio-modal-qr" style="display: none;">
+                                        <div class="precio_modal_content_qr">
+                                            <div class="precio_modal_header_qr">
+                                                <h4>Desglose del precio</h4>
+                                                <button class="precio_modal_close_qr">✕</button>
+                                            </div>
+                                            <div class="precio_modal_body_qr">
+                                                <div class="precio_item_modal_qr">
+                                                    <span class="precio_concepto_modal">Vuelo Santa Cruz → La Paz</span>
+                                                    <span class="precio_monto_modal">BOB 702</span>
+                                                </div>
+                                                <div class="precio_item_modal_qr">
+                                                    <span class="precio_concepto_modal">Vuelo La Paz → Santa Cruz</span>
+                                                    <span class="precio_monto_modal">BOB 811</span>
+                                                </div>
+                                                <div class="precio_item_modal_qr">
+                                                    <span class="precio_concepto_modal">Tasas aeroportuarias</span>
+                                                    <span class="precio_monto_modal">BOB 8</span>
+                                                </div>
+                                                <div class="precio_separator_modal_qr"></div>
+                                                <div class="precio_item_modal_qr precio_total_modal_qr">
+                                                    <span class="precio_concepto_modal">Total</span>
+                                                    <span class="precio_monto_modal">BOB 1,405</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="qr_actions">
+                                        <button class="btn_atras_qr">Atrás</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones de navegación -->
+        <div class="navigation_buttons">
+            <button class="btn_anterior" id="btn-anterior">Anterior</button>
+            <button class="btn_siguiente" id="btn-siguiente">Siguiente</button>
+        </div>
+    </div>
+
+{% endblock content  %}
+
+{% block scripts %}
+    <script src="{% static 'js/reserva.js' %}"></script>
+{% endblock scripts %}
